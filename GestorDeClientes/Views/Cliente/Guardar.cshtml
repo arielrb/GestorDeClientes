@@ -1,0 +1,25 @@
+﻿@model Cliente
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+    Esta pagina contendrá el formulario para guardar nuevos clientes
+*@
+@{
+}
+
+<h1> La pagina de guardar funciona!</h1>
+
+<form asp-action="Guardar" asp-controller="Cliente" method="post">
+  <div class="form-group">
+    <label for="exampleInputEmail1">Nombre</label>
+    <input asp-for="nombre" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Telefono</label>
+    <input asp-for="telefono" type="text" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for="exampleInputPassword1">Email</label>
+    <input asp-for="email" type="email" class="form-control">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>

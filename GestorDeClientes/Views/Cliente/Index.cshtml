@@ -6,12 +6,18 @@
 @{
 }
 
+<a asp-action="Guardar" asp-controller="Cliente" class="btn btn-primary">Crear Cliente</a>
+
 <h1> Los clientes son:</h1>
 
 @foreach( var item in Model )
 {
-    @item.Id
-    @item.nombre
-    @item.telefono
-    @item.email
+    <p>@item.Id</p>
+    <p>@item.nombre</p>
+    <p>@item.telefono</p>
+    <p>@item.email</p>
+    <a asp-action="Editar" asp-controller="Cliente" class="btn btn-secondary" asp-route-id="@item.Id" >Editar Cliente</a> 
+    <br> 
+    <a asp-action="Eliminar" asp-controller="Cliente" class="btn btn-danger" asp-route-id="@item.Id" >Eliminar Cliente</a>
+
 }
