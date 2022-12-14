@@ -1,0 +1,26 @@
+﻿@model List<Empleado>
+
+
+@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+}
+
+
+<h1> Los clientes son:</h1>
+
+@foreach( var item in Model )
+{
+                <th>@Html.DisplayFor(m => item.nombre)</th>
+                <p>---------------</p>
+                <th>@Html.DisplayFor(m => item.empleadoId)</th>
+                <p>---------------</p>
+                <th>@Html.DisplayFor(m => item.clienteId)</th>
+                <p>---------------</p>
+                <th>@Html.DisplayFor(m => item.clienteAsociado.nombre)</th>
+                <p>---------------</p>
+              
+
+
+}

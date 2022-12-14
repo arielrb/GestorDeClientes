@@ -51,7 +51,7 @@ namespace GestorDeClientes.Datos
         }
 
         //Metodo Read By, o buscar Cliente
-        public Cliente Obtener(int id)
+        public Cliente Obtener(int idContacto)
         {
             //Variable que recibe la info de la BBDD
             var oCliente = new Cliente();
@@ -67,7 +67,7 @@ namespace GestorDeClientes.Datos
                     conexionTemp.Open();
                     //Traemos el comando SQL
                     SqlCommand cmd = new SqlCommand("Obtener", conexionTemp);
-                    cmd.Parameters.AddWithValue("id", id);
+                    cmd.Parameters.AddWithValue("IdContacto", idContacto);
                     cmd.CommandType = CommandType.StoredProcedure;
 
                     //Realizamos la lectura de los registros

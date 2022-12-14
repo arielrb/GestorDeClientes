@@ -4,6 +4,7 @@ using GestorDeClientes.Models;
 
 namespace GestorDeClientes.Controllers
 {
+    [Route("mvc/[controller]")]
     public class ClienteController : Controller
     {
         //Creamos instancia conexion
