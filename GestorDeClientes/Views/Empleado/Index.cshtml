@@ -1,4 +1,5 @@
-﻿@model List<Empleado>
+﻿@using System.Linq;
+@model List<Empleado>
 
 
 @*
@@ -19,7 +20,10 @@
                 <th>@Html.DisplayFor(m => item.clienteId)</th>
                 <p>---------------</p>
                 <th>@Html.DisplayFor(m => item.clienteAsociado.nombre)</th>
+                <p>--------------- Mira,fijate si esto va</p>
+                <th>@Html.DisplayFor(m => m.Where(s => s.clienteId == 1))</th>
                 <p>---------------</p>
+
               
 
 
