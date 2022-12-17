@@ -31,7 +31,12 @@ namespace GestorDeClientes.Datos
                             UsuarioNombre = Convert.ToString(lector["UsuarioNombre"]),
                             UsuarioContrasenia = Convert.ToString(lector["UsuarioContrasenia"]),
                             UsuarioEmail = Convert.ToString(lector["UsuarioEmail"]),
-                            UsuarioRolId = Convert.ToInt32(lector["UsuarioRolId"])
+                            UsuarioRolId = Convert.ToInt32(lector["UsuarioRolId"]),
+                            usuarioRol = new Rol()
+                            {
+                                Idrol = Convert.ToInt32(lector["RolId"]),
+                                detalle = Convert.ToString(lector["detalle"])
+                            }
                         });
                     }//Aca ya no existe la variable lector, se destruyo
                 }//Aca ya no existe la variable conexionTemp, se destruyo
@@ -40,7 +45,7 @@ namespace GestorDeClientes.Datos
         }
         public Usuarios ValidarUsuario(string user, string pass)
         {
-            return ListarUsuarios().Where(item => item.UsuarioEmail == user && item.UsuarioContrasenia == pass).FirstOrDefault();
+            return ListarUsuarios().Where(item => item.UsuarioNombre == user && item.UsuarioContrasenia == pass).FirstOrDefault();
         }
         public Usuarios Autenticar(string user, string pass)
         {
@@ -57,7 +62,10 @@ namespace GestorDeClientes.Datos
                     conexionTemp.Open();
                     //Aca instancio un objeto para las query y la relaciono con el sp
                     SqlCommand cmd = new SqlCommand("AutenticarUsuarios", conexionTemp);
+                    cmd.Parameters.AddWithValue("user", user );
+                    cmd.Parameters.AddWithValue("pass", pass);
                     cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.ExecuteNonQuery();
                     //Comienzo la lectura de datos
                     using (var lector = cmd.ExecuteReader())
                     {
@@ -68,6 +76,11 @@ namespace GestorDeClientes.Datos
                             usuario.UsuarioContrasenia = Convert.ToString(lector["UsuarioContrasenia"]);
                             usuario.UsuarioEmail = Convert.ToString(lector["UsuarioEmail"]);
                             usuario.UsuarioRolId = Convert.ToInt32(lector["UsuarioRolId"]);
+                            usuario.usuarioRol = new Rol()
+                            {
+                                Idrol = Convert.ToInt32(lector["Idrol"]),
+                                detalle = Convert.ToString(lector["detalle"])
+                            };
                         }
                     }
                 }
